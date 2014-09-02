@@ -1,0 +1,6 @@
+br\com\codigosfontes\testenetbeans4\domain\Usuario.class
+br\com\codigosfontes\testenetbeans4\bo\GenericBO.class
+br\com\codigosfontes\testenetbeans4\bo\UsuarioBO.class
+br\com\codigosfontes\testenetbeans4\dao\UsuarioDAO.class
+br\com\codigosfontes\testenetbeans4\dao\GenericDAO.class
+br\com\codigosfontes\testenetbeans4\form\UsuarioForm.class
