@@ -1,4 +1,4 @@
-package br.com.codigosfontes.testenetbeans4.dao;
+package br.com.consulti.academics.daoImpl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;

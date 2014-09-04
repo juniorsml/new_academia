@@ -1,7 +1,7 @@
-package br.com.codigosfontes.testenetbeans4.bo;
+package br.com.consulti.academics.business;
 
-import br.com.codigosfontes.testenetbeans4.dao.UsuarioDAO;
-import br.com.codigosfontes.testenetbeans4.domain.Usuario;
+import br.com.consulti.academics.daoImpl.UsuarioDAO;
+import br.com.consulti.academics.model.Usuario;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

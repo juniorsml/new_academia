@@ -1,6 +1,6 @@
 package br.com.codigosfontes.testenetbeans4.form;
 
-import br.com.codigosfontes.testenetbeans4.bo.UsuarioBO;
+import br.com.consulti.academics.business.UsuarioBO;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;

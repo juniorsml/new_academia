@@ -1,7 +1,7 @@
-package br.com.codigosfontes.testenetbeans4.bo;
+package br.com.consulti.academics.business;
 
 
-import br.com.codigosfontes.testenetbeans4.dao.GenericDAO;
+import br.com.consulti.academics.daoImpl.GenericDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
