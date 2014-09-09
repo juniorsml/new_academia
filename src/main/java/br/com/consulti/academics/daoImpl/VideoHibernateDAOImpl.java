@@ -10,7 +10,7 @@ import br.com.consulti.academics.model.Video;
  *
  * @author Valter
  */
-public class VideoHibernateDAOImpl extends HibernateDaoImpl<Video> {
+public class VideoHibernateDAOImpl extends GenericDAO<Video> {
     
     
     

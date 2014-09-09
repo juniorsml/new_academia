@@ -8,22 +8,29 @@ import br.com.consulti.academics.daoImpl.VideoHibernateDAOImpl;
 import br.com.consulti.academics.model.Video;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 /**
  *
  * @author Valter
  */
-public class VideoBusiness implements Serializable {
+public class VideoBusiness extends GenericBO<Video> implements Serializable  {
 
-    VideoHibernateDAOImpl dao = new VideoHibernateDAOImpl();
+    @Inject
+    VideoHibernateDAOImpl dao ;
 
     public List<Video> getAll() {
-        return dao.getAll();
+        return dao.buscarTodos();
     }
 
     public Video obterPorID(Long id) {
-        return dao.get(id);
+        return dao.buscarPorId(id.intValue());
+    }
 
+    @Override
+    @PostConstruct
+    protected void inicializar() {
+        this.genericDAO = dao;
     }
 }

@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+
+        <div id="content" >
+            <ui:insert name="content">
+
+                <h:form id="form" >
+
+                    <p:growl id="growl" showDetail="true" />
+
+                    <p:dashboard id="board" model="#{dashboardBean.model}"   >
+                        <p:ajax event="reorder" listener="#{dashboardBean.handleReorder}" update="growl"  />
+
+                        <p:panel id="Lixeira" header="Lixeira" style="padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                            <img src="./resources/img/lixeira.jpg" alt="Lixeira" />
+                        </p:panel>
+
+                        <p:panel id="Usuários" header="Usuários" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                            <img src="./resources/img/iconeUsuario.png"  alt="Controlar Usuários"/>
+                        </p:panel>
+
+                        <p:panel id="Adicionar" header="Adicionar"    style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%" >
+                            <img src="./resources/img/adcionarVideo.png" alt="Novo Video" onclick="PF('dialog').show()" />
+                        </p:panel>
+
+                        <p:panel id="Desativar" header="Desativar" style="padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                            <img src="./resources/img/deletarVideo.png" alt="Desetivar Video" />
+                        </p:panel>
+
+
+
+
+
+                    </p:dashboard>
+
+                </h:form>
+
+                <!--                    <img src="./resources/img/adcionarVideo.png" alt="Novo Video" onclick="PF('dialog').show()" />
+                                    <img src="./resources/img/deletarVideo.png" alt="Desetivar Video" />
+                                    <img src="./resources/img/lixeira.jpg" alt="Lixeira" />
+                                    <img src="./resources/img/iconeUsuario.png"  alt="Controlar Usuários"/>-->
+            </ui:insert>
+        </div>
+
+        <div id="alfa" class="menuhor       ">
+
+
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+
+        </div>
+
+        <!--Inicio do Dialog para analise de Planos -->
+        <p:dialog header="Nova Simulação" widgetVar="dialog"  resizable="false" modal="true" showEffect="slide" width="80%" >
+            <h:form prependId="false" id="frmDialog">
+                <p:tabView effect="drop" effectDuration="normal">
+
+                    <p:tab title="Videos">
+                        <p:fieldset legend="Video"> 
+                                <h:panelGrid columns="1" cellpadding="4" >
+                                      <h:form>  
+                                        <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"  
+                                                      update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />  
+                                        <p:growl id="messages" showDetail="true"/>  
+                                    </h:form>
+                                    <h:outputLabel for="nomeVideo" value="Nome do Video :"/>
+                                    <h:inputText id="nomeVideo" size="100" value="#{videoMB.video.nomeVideo}"/>
+                                    <h:outputLabel for="descVideo"  value="Descrição do Video :" title="Dicas do Video :"/>
+                                    <h:inputTextarea id="descVideo"  rows="10" cols="100" value="#{videoMB.video.descricaoVideo}" />
+                                    <h:outputLabel for="dicasVideo"  value="Dicas do Exercício :" title="Descrição do Aparelho :"/>
+                                    <h:inputTextarea id="dicasVideo"  rows="10" cols="100" value="#{videoMB.video.dicasExercicio}" />
+                                    <h:outputLabel for="cuidadosVideo"  value="Cuidados do Exercício :" title="Cuidados do Exercício :"/>
+                                    <h:inputTextarea id="cuidadosVideo"  rows="10" cols="100" value="#{videoMB.video.cuidadosExercicio}" />                                
+                                </h:panelGrid>
+                        </p:fieldset>
+                    </p:tab>
+                    <p:tab title="Aparelho">
+                        <p:fieldset legend="Aparelho"> 
+                            <h:panelGrid columns="2" cellpadding="1">
+                                <h:panelGrid columns="2" cellpadding="10">
+                                    <h:outputLabel for="nomeAparelho" value="Nome do Aparelho :"/>
+                                    <h:inputText id="nomeAparelho" size="100" value="#{videoMB.video.aparelho.nomeAparelho}"/>
+                                    <h:outputLabel for="descAparelho"  value="Descrição do Aparelho :" title="Descrição do Aparelho :"/>
+                                    <h:inputTextarea id="descAparelho"  rows="10" cols="100" value="#{videoMB.video.aparelho.descricaoAparelho}" />
+                                </h:panelGrid>
+                            </h:panelGrid></p:fieldset>
+                    </p:tab>
+                    <p:tab title="Musculo">
+                        <p:fieldset legend="Musculo"> 
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel for="nomeMusculo" value="Nome do Musculo :"/>
+                                <h:inputText id="nomeMusculo" size="100" value="#{videoMB.video.musculo.nomeGrupo}"/>
+                                <h:outputLabel for="descMusculo"  value="Descrição do Musculo :" title="Descrição do Musculo :"/>
+                                <h:inputTextarea id="descMusculo"  rows="10" cols="100" value="#{videoMB.video.musculo.descricaoGrupo}" />
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </p:tab>
+
+                    <p:tab title="Grupo Muscular">
+                        <p:fieldset legend="Grupo Muscular"> 
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel for="nomeGrupoMusc" value="Nome do Grupo Muscular :"/>
+                                <h:inputText id="nomeGrupoMusc" size="100" value="#{videoMB.video.musculo.grupo.nomeGrupo}"/>
+                                <h:outputLabel for="descGrupoMusc"  value="Descrição do Grupo Muscular :" title="Descrição do Grupo Muscular :"/>
+                                <h:inputTextarea id="descGrupoMusc"  rows="10" cols="100" value="#{videoMB.video.musculo.grupo.descricaoGrupo}" />
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </p:tab>
+
+                </p:tabView>
+            </h:form>
+        </p:dialog>
+        <!--Fim do Dialog para analise de Planos -->
+
+
+
+    </h:body>
+
+</html>

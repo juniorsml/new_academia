@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/jquery/player/video-js.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./resources/jquery/jquery-2.0.2.js"></script>
+        <script type="text/javascript" src="./resources/jquery/player/video.js"></script>
+
+        <title>Academics Videos</title>
+
+        <script type="text/javascript" charset="utf-8">
+            // Add VideoJS to all video tags on the page when the DOM is ready
+            VideoJS.setupAllWhenReady();
+            Videojs.options.flash.swf = "video-js.swf";
+            
+            function playVideo(url) {
+                $(function() {
+                    $(function() {
+                        event.preventDefault();
+                        $('#fonte').attr('src', url);
+                        var video = $('#video').get(0);
+                        video.load();
+                        video.play();
+                    })
+                });
+            }
+            
+            
+           
+        </script>
+
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+        <div id="alfa" class="menuhor       ">
+
+            <ui:include src="letras.xhtml"/> 
+        </div>
+        <div id="left">
+            <ui:insert name="left">
+
+                <h:outputLabel  class="label" for="nomeVideo" value="Nome do Exercicio : " /><p/>
+                <h:outputText class="descricao" id="nomeVideo" value="${videoMB.video.nomeVideo}"/><p/>
+
+                <h:outputLabel class="label" for="nomeAparelho" value="Nome do Aparelho : " /><p/>
+                <h:outputText  class="descricao" id="nomeAparelho" value="${videoMB.video.aparelho}"/><p/>
+
+                <h:outputLabel for="nomeGrupo" class="label" value="Nome do Grupo Muscular : " /><p/>
+                <h:outputText class="descricao"  id="nomeGrupo" value="${videoMB.video.musculo.grupo.nomeGrupo}"/><p/>
+
+                <h:outputLabel for="nomeMusculo" class="label" value="Nome do Musculo : " /><p/>
+                <h:outputText class="descricao" id="nomeMusculo" value="${videoMB.video.musculo.nomeMusculo}"/><p/>
+
+
+            </ui:insert>
+        </div>
+        <div id="right" class="menubv">
+            <ui:insert name="right">
+
+                <ul>
+                    <c:forEach var="video" items="${videoMB.videos}"  >
+                        <h:form>
+                            <li><p:commandLink id="ajax"  ajax="true" actionListener="#{videoMB.obterPorId(video.id)}" update=":padding" oncomplete="playVideo('${video.urlVideo}');" >
+                                    <h:outputText value="${video.nomeVideo}" />  
+                                </p:commandLink></li></h:form>
+                    </c:forEach>
+
+                </ul>
+            </ui:insert>
+        </div>
+        <h:panelGroup id="padding" layout="block">
+            <div id="content" class="right_content video-js-box video-js-box ">
+                <ui:insert >
+                    <video id="video" class="video-js "    preload="auto"  controls="true"  >
+                        <source id="fonte" src="webm/abdominal bicicleta.webm"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+
+                    </video>
+                </ui:insert>
+            </div>
+        </h:panelGroup>  
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

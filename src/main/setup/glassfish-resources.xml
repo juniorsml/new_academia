@@ -29,17 +29,17 @@
         wrap-jdbc-objects="false">
         
         <property name="serverName" value="localhost"/>
-        <property name="portNumber" value="5432"/>
-        <property name="databaseName" value="seu_banco"/>
-        <property name="User" value="seu_usuario"/>
-        <property name="Password" value="sua_senha"/>
-        <property name="URL" value="jdbc:postgresql://localhost:5432/seu_banco"/>
-        <property name="driverClass" value="org.postgresql.Driver"/>
+        <property name="portNumber" value="1527"/>
+        <property name="databaseName" value="CONSULTI"/>
+        <property name="User" value="consulTI"/>
+        <property name="Password" value="141202"/>
+        <property name="URL" value="jdbc:derby://localhost:1527/derby"/>
+        <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver"/>
         
     </jdbc-connection-pool>
     
     <jdbc-resource enabled="true" 
-                   jndi-name="jdbc/netbeansteste" 
+                   jndi-name="jdbc/academics" 
                    object-type="user" 
                    pool-name="post-gre-sql_integrada_teste_postgresPool"/>
     

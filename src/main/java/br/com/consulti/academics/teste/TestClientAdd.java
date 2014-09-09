@@ -35,12 +35,9 @@ public class TestClientAdd {
             // v = dao.get(new Long(13));
             //  dao.createOrUpdate(v);
 
-            for (Video vi : dao.getAll()) {
-
+            for (Video vi : dao.buscarTodos()) {
                 System.out.println(vi.getId());
             }
-
-
 
             System.out.println(v.getId());
 

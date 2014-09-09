@@ -18,13 +18,14 @@ import org.hibernate.criterion.Order;
 /**
  * Classe DAO generica para acesso aos dados.
  * @author codigosfontes.com.br
+ * @param <T>
  */
 public abstract class GenericDAO<T> implements Serializable {
 
-    @PersistenceContext(unitName="TesteNetbeansPU")
+    @PersistenceContext(unitName="AcademicsPU")
     protected EntityManager entityManager;
     
-    @Resource(mappedName="jdbc/netbeansteste")
+    @Resource(mappedName="jdbc/academics")
     DataSource dataSource;   
     
 
