@@ -1,6 +1,7 @@
 package br.com.consulti.academics.business;
 
 
+import br.com.consulti.academics.dao.DAO;
 import br.com.consulti.academics.daoImpl.GenericDAO;
 import java.io.Serializable;
 import java.util.List;
@@ -11,10 +12,11 @@ import org.hibernate.criterion.Order;
 /**
  * @author codigosfontes.com.br
  * BO genérico com as operações básicas
+ * @param <E>
  */
 public abstract class GenericBO<E> implements Serializable {
     
-    protected GenericDAO<E> genericDAO;  
+    protected DAO<E> genericDAO;  
 
     @PostConstruct    
     protected abstract void inicializar();

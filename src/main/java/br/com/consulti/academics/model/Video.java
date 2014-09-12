@@ -5,6 +5,8 @@
 package br.com.consulti.academics.model;
 
 import java.io.Serializable;
+import javax.ejb.Local;
+import javax.enterprise.context.Dependent;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +17,13 @@ import javax.persistence.ManyToOne;
  *
  * @author Valter
  */
+@Dependent
+@Local
 @Entity
 public class Video implements Serializable {
+
+    public Video(){
+    }
     
     private static final long serialVersionUID = 1L;
     @Id

@@ -8,6 +8,7 @@ import br.com.consulti.academics.business.VideoBusiness;
 import br.com.consulti.academics.model.Video;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,7 +25,10 @@ import org.primefaces.model.UploadedFile;
 @SessionScoped
 public class VideoMB implements Serializable {
 
-    VideoBusiness business = new VideoBusiness();
+    @Inject
+    VideoBusiness business ;
+    
+    @Inject
     Video video;
     List<Video> videos;
     

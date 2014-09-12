@@ -1,23 +1,48 @@
 package br.com.consulti.academics.dao;
 
+import java.sql.Connection;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 
 public interface DAO<T> {
 
-    void save(T persistentObject);
+    public Class<T> getPersistentClass();
 
-    List<T> getAll();
+    public void excluir(T entity);
 
-    void update(T persistentObject);
+    public T buscarPorId(int id);
 
-    void createOrUpdate(T persistentObject);
+    /**
+     * Recupera o objeto dando join em todos os relacionamentos
+     * @param campo
+     * @param valor
+     * @return 
+     */
+    public T buscarUmPorCampoCompleto(String campo, Object valor);
 
-    void delete(T persistentObject);
+    public List<T> buscarTodos();
 
-    void start();
+    public T salvar(T entity);
 
-    void finish();
+    public List<T> buscarListaPorCriterio(Criterion... criterion);
 
-    Session getSession();
+    public List<T> buscarListaPorCriterio(Order order, Criterion... criterion);
+
+    public T buscarUmPorCriterio(Criterion... criterion);
+
+    /**
+     * Retorna uma Session do hibernate retirada do EntityManager do JPA
+     *
+     * @return
+     */
+    public Session getSession();
+
+    /**
+     * Retorna a conexao JDBC com o Postgres
+     *
+     * @return
+     */
+    public Connection getConnection();
 }

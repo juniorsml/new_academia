@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml"
-xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:p="http://primefaces.org/ui"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:c="http://java.sun.com/jsp/jstl/core">
-    
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
@@ -20,44 +19,35 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
         </div>
 
         <div id="content" >
-            <ui:insert name="content">
+            <div style="height:500px">
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" />
 
-                <h:form id="form" >
-
-                    <p:growl id="growl" showDetail="true" />
-
-                    <p:dashboard id="board" model="#{dashboardBean.model}"   >
-                        <p:ajax event="reorder" listener="#{dashboardBean.handleReorder}" update="growl"  />
+                    <p:dashboard id="board" model="#{dashboardView.model}">
+                        <p:ajax event="reorder" listener="#{dashboardView.handleReorder}" update="msgs" />
 
                         <p:panel id="Lixeira" header="Lixeira" style="padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
                             <img src="./resources/img/lixeira.jpg" alt="Lixeira" />
                         </p:panel>
 
-                        <p:panel id="Usuários" header="Usuários" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                        <p:panel id="Usuarios" header="Usuarios" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
                             <img src="./resources/img/iconeUsuario.png"  alt="Controlar Usuários"/>
                         </p:panel>
 
-                        <p:panel id="Adicionar" header="Adicionar"    style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%" >
+                        <p:panel id="Adicionar" header="Adicionar" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
                             <img src="./resources/img/adcionarVideo.png" alt="Novo Video" onclick="PF('dialog').show()" />
                         </p:panel>
-
-                        <p:panel id="Desativar" header="Desativar" style="padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                        
+                         <p:panel id="Desativar" header="Desativar" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
                             <img src="./resources/img/deletarVideo.png" alt="Desetivar Video" />
                         </p:panel>
 
-
-
-
-
+                        
                     </p:dashboard>
 
+                    <div style="clear:both" />
                 </h:form>
-
-                <!--                    <img src="./resources/img/adcionarVideo.png" alt="Novo Video" onclick="PF('dialog').show()" />
-                                    <img src="./resources/img/deletarVideo.png" alt="Desetivar Video" />
-                                    <img src="./resources/img/lixeira.jpg" alt="Lixeira" />
-                                    <img src="./resources/img/iconeUsuario.png"  alt="Controlar Usuários"/>-->
-            </ui:insert>
+            </div>
         </div>
 
         <div id="alfa" class="menuhor       ">
@@ -137,3 +127,24 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
     </h:body>
 
 </html>
+
+
+<!--            <p:panel id="Lixeira" header="Lixeira" style="padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                                     <img src="./resources/img/lixeira.jpg" alt="Lixeira" />
+                                </p:panel>
+                    
+                                <p:panel id="Usuarios" header="Usuarios" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                                     <img src="./resources/img/iconeUsuario.png"  alt="Controlar Usuários"/>
+                                </p:panel>
+                                            
+                                <p:panel id="Adicionar" header="Adicionar" style=" padding-bottom: 1%; display:inline-block; width: 35%;height: 50%">
+                                     <img src="./resources/img/adcionarVideo.png" alt="Novo Video" onclick="PF('dialog').show()" />
+                                </p:panel>
+                    
+                                 <p:panel id="Desativar" header="Desativar">
+                                   <img src="./resources/img/deletarVideo.png" alt="Desetivar Video" />
+                                </p:panel>         -->
+<!--                    <img src="./resources/img/adcionarVideo.png" alt="Novo Video" onclick="PF('dialog').show()" />
+                    <img src="./resources/img/deletarVideo.png" alt="Desetivar Video" />
+                    <img src="./resources/img/lixeira.jpg" alt="Lixeira" />
+                    <img src="./resources/img/iconeUsuario.png"  alt="Controlar Usuários"/>-->

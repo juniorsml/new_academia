@@ -1,5 +1,6 @@
 package br.com.consulti.academics.daoImpl;
 
+import br.com.consulti.academics.dao.DAO;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.sql.Connection;
@@ -20,10 +21,10 @@ import org.hibernate.criterion.Order;
  * @author codigosfontes.com.br
  * @param <T>
  */
-public abstract class GenericDAO<T> implements Serializable {
+public abstract class GenericDAO<T> implements Serializable , DAO<T>{
 
-    @PersistenceContext(unitName="AcademicsPU")
-    protected EntityManager entityManager;
+    @PersistenceContext(unitName = "AcademicsPU")
+    private EntityManager entityManager;
     
     @Resource(mappedName="jdbc/academics")
     DataSource dataSource;   
@@ -33,6 +34,8 @@ public abstract class GenericDAO<T> implements Serializable {
         this.persistentClass = (Class<T>) ((ParameterizedType) 
                 getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
+    
+     
     
     private Class<T> persistentClass;
 
@@ -70,6 +73,7 @@ public abstract class GenericDAO<T> implements Serializable {
         }        
     }
 
+    @Override
     public List<T> buscarTodos() {
         return getSession().createCriteria(persistentClass)
                            .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
@@ -80,6 +84,7 @@ public abstract class GenericDAO<T> implements Serializable {
         return entity;
     }
 
+    @Override
     public List<T> buscarListaPorCriterio(Criterion... criterion) {
         Criteria crit = getSession().createCriteria(getPersistentClass());
         for (Criterion c : criterion) {
@@ -111,14 +116,18 @@ public abstract class GenericDAO<T> implements Serializable {
     
     /**
      * Retorna uma Session do hibernate retirada do EntityManager do JPA
+     * @return 
      */
+    @Override
     public Session getSession() {
+        System.out.println("entityManager " + entityManager);
        return (Session) entityManager.unwrap(Session.class);
     }
     
     /**
      * Retorna a conexao JDBC com o Postgres
      */
+    @Override
     public Connection getConnection() {
         try {
             return dataSource.getConnection();

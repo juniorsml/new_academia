@@ -9,7 +9,7 @@
         connection-leak-reclaim="false" 
         connection-leak-timeout-in-seconds="0" 
         connection-validation-method="auto-commit" 
-        datasource-classname="org.postgresql.ds.PGSimpleDataSource" 
+        datasource-classname="org.apache.derby.jdbc.ClientDataSource" 
         fail-all-connections="false" idle-timeout-in-seconds="300" 
         is-connection-validation-required="false" 
         is-isolation-level-guaranteed="true" 
@@ -19,7 +19,7 @@
         max-connection-usage-count="0" 
         max-pool-size="32" 
         max-wait-time-in-millis="60000" 
-        name="post-gre-sql_integrada_teste_postgresPool" 
+        name="academics_pool" 
         non-transactional-connections="false" 
         pool-resize-quantity="2" 
         res-type="javax.sql.DataSource" 
@@ -30,17 +30,14 @@
         
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="1527"/>
-        <property name="databaseName" value="CONSULTI"/>
+        <property name="databaseName" value="derby"/>
         <property name="User" value="consulTI"/>
         <property name="Password" value="141202"/>
         <property name="URL" value="jdbc:derby://localhost:1527/derby"/>
-        <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+        <property name="driverClass" value="org.apache.derby.jdbc.ClientDataSource"/>
         
     </jdbc-connection-pool>
     
-    <jdbc-resource enabled="true" 
-                   jndi-name="jdbc/academics" 
-                   object-type="user" 
-                   pool-name="post-gre-sql_integrada_teste_postgresPool"/>
+    <jdbc-resource jndi-name="jdbc/academics" pool-name="academics_pool" />
     
 </resources>
