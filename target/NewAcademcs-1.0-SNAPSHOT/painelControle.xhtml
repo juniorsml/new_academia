@@ -61,26 +61,25 @@
         </div>
 
         <!--Inicio do Dialog para analise de Planos -->
-        <p:dialog header="Nova Simulação" widgetVar="dialog"  resizable="false" modal="true" showEffect="slide" width="80%" >
-            <h:form prependId="false" id="frmDialog">
+        <p:dialog header="Nova Simulação" widgetVar="dialog"  resizable="false" modal="true" showEffect="slide" width="70%" >
+            <form prependId="false" id="frmDialog">
                 <p:tabView effect="drop" effectDuration="normal">
 
                     <p:tab title="Videos">
                         <p:fieldset legend="Video"> 
-                                <h:panelGrid columns="1" cellpadding="4" >
-                                      <h:form>  
-                                        <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"  
-                                                      update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />  
-                                        <p:growl id="messages" showDetail="true"/>  
-                                    </h:form>
+                                <h:panelGrid columns="1" cellpadding="1"  >
+                                   <form>  
+                                    <h:outputLabel for="uploadVideo" value="Upload do Video :"/>
+                                    <input type="file" accept="video/*" id="uploadVideo"/>
                                     <h:outputLabel for="nomeVideo" value="Nome do Video :"/>
-                                    <h:inputText id="nomeVideo" size="100" value="#{videoMB.video.nomeVideo}"/>
+                                    <input type="text" id="nomeVideo" size="100" value="#{videoMB.video.nomeVideo}"/>
                                     <h:outputLabel for="descVideo"  value="Descrição do Video :" title="Dicas do Video :"/>
-                                    <h:inputTextarea id="descVideo"  rows="10" cols="100" value="#{videoMB.video.descricaoVideo}" />
+                                    <textArea  id="descVideo"  rows="5" cols="100" value="#{videoMB.video.descricaoVideo}" />
                                     <h:outputLabel for="dicasVideo"  value="Dicas do Exercício :" title="Descrição do Aparelho :"/>
-                                    <h:inputTextarea id="dicasVideo"  rows="10" cols="100" value="#{videoMB.video.dicasExercicio}" />
+                                    <textArea id="dicasVideo"  rows="5" cols="100" value="#{videoMB.video.dicasExercicio}" />
                                     <h:outputLabel for="cuidadosVideo"  value="Cuidados do Exercício :" title="Cuidados do Exercício :"/>
-                                    <h:inputTextarea id="cuidadosVideo"  rows="10" cols="100" value="#{videoMB.video.cuidadosExercicio}" />                                
+                                    <textArea id="cuidadosVideo"  rows="5" cols="100" value="#{videoMB.video.cuidadosExercicio}" />   
+                                   </form>
                                 </h:panelGrid>
                         </p:fieldset>
                     </p:tab>
@@ -118,7 +117,7 @@
                     </p:tab>
 
                 </p:tabView>
-            </h:form>
+            </form>
         </p:dialog>
         <!--Fim do Dialog para analise de Planos -->
 
